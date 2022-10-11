@@ -1,0 +1,99 @@
+hive> CREATE TABLE episodeV (name STRING, line STRING) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' TBLPROPERTIES ("skip.header.line.count"="2");
+OK
+Time taken: 0.26 seconds
+hive> LOAD DATA LOCAL INPATH 'episodeV_dialouges.txt' INTO TABLE episodeV;
+Loading data to table default.episodev
+OK
+Time taken: 1.219 seconds
+hive> SELECT name, COUNT(name) AS no_of_lines from episodeV GROUP BY name ORDER BY no_of_lines DESC;
+Query ID = root_20220922072923_20d601c7-337d-4aaf-899b-daba7e64bd9b
+Total jobs = 2
+Launching Job 1 out of 2
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1663828788458_0005, Tracking URL = http://bb56f1f5b4c4:8088/proxy/application_1663828788458_0005/
+Kill Command = /usr/local/hadoop/bin/mapred job  -kill job_1663828788458_0005
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2022-09-22 07:29:41,501 Stage-1 map = 0%,  reduce = 0%
+2022-09-22 07:29:52,120 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 5.68 sec
+2022-09-22 07:30:02,835 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 12.19 sec
+MapReduce Total cumulative CPU time: 12 seconds 190 msec
+Ended Job = job_1663828788458_0005
+Launching Job 2 out of 2
+Number of reduce tasks determined at compile time: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1663828788458_0006, Tracking URL = http://bb56f1f5b4c4:8088/proxy/application_1663828788458_0006/
+Kill Command = /usr/local/hadoop/bin/mapred job  -kill job_1663828788458_0006
+Hadoop job information for Stage-2: number of mappers: 1; number of reducers: 1
+2022-09-22 07:30:24,284 Stage-2 map = 0%,  reduce = 0%
+2022-09-22 07:30:33,900 Stage-2 map = 100%,  reduce = 0%, Cumulative CPU 3.93 sec
+2022-09-22 07:30:44,668 Stage-2 map = 100%,  reduce = 100%, Cumulative CPU 10.35 sec
+MapReduce Total cumulative CPU time: 10 seconds 350 msec
+Ended Job = job_1663828788458_0006
+MapReduce Jobs Launched:
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 12.19 sec   HDFS Read: 61984 HDFS Write: 1530 SUCCESS
+Stage-Stage-2: Map: 1  Reduce: 1   Cumulative CPU: 10.35 sec   HDFS Read: 9046 HDFS Write: 1333 SUCCESS
+Total MapReduce CPU Time Spent: 22 seconds 540 msec
+OK
+HAN     182
+LUKE    128
+LEIA    114
+THREEPIO        92
+LANDO   61
+VADER   56
+YODA    36
+PIETT   23
+CREATURE        21
+RIEEKAN 13
+BEN     11
+WEDGE   8
+VEERS   7
+DECK OFFICER    7
+ZEV     6
+OZZEL   5
+NEEDA   5
+EMPEROR 5
+BOBA FETT       4
+JANSON  4
+DACK    4
+BEN'S VOICE     4
+ANNOUNCER       3
+CONTROLLER      3
+TRENCH OFFICER  3
+DERLIN  3
+IMPERIAL OFFICER        2
+MEDICAL DROID   2
+LIEUTENANT      2
+SENIOR CONTROLLER       2
+INTERCOM VOICE  2
+TRACKING OFFICER        2
+COMMUNICATIONS OFFICER  2
+HOBBIE  1
+HEAD CONTROLLER 1
+STRANGE VOICE   1
+FIRST CONTROLLER        1
+SECOND OFFICER  1
+MAN'S VOICE     1
+ASSISTANT OFFICER       1
+OFFICER 1
+SECOND CONTROLLER       1
+PILOT   1
+REBEL FIGHTER   1
+CAPTAIN 1
+PILOTS  1
+REBEL CAPTAIN   1
+WOMAN CONTROLLER        1
+IMPERIAL SOLDIER        1
+SECOND THREEPIO 1
+Time taken: 83.374 seconds, Fetched: 50 row(s)
+hive>
